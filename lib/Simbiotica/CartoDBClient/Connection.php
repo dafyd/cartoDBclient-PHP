@@ -286,7 +286,7 @@ class Connection
             elseif (is_bool($elem))
                 $values[$key] = sprintf('%s', $elem?'1':'0');
             elseif (is_string($elem))
-                $values[$key] = sprintf('\'%s\'', pg_escape_string($elem));
+                $values[$key] = sprintf('\'%s\'', mysql_real_escape_string($elem));
             elseif ($elem instanceof \DateTime)
                 $values[$key] = sprintf('\'%s\'', $elem->format('Y-m-d\TH:i:sP'));
         }
